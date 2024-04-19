@@ -1,3 +1,4 @@
+import { CourseCardListComponent } from './../course-card-list/course-card-list.component';
 import { Component } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -5,12 +6,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable, map } from 'rxjs';
 import { ICourse } from '../../models/course';
 import { CoursesService } from '../../services/courses.service';
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatTabsModule],
+  imports: [MatIconModule, MatButtonModule, MatTabsModule, CourseCardListComponent, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

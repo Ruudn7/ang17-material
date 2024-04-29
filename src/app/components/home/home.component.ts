@@ -7,12 +7,13 @@ import { Observable, map } from 'rxjs';
 import { ICourse } from '../../models/course';
 import { CoursesService } from '../../services/courses.service';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatIconModule, MatButtonModule, MatTabsModule, CourseCardListComponent, CommonModule],
+  imports: [MatIconModule, MatButtonModule, MatTabsModule, CourseCardListComponent, CommonModule, RouterModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

@@ -1,1 +1,29 @@
-<p>create-course works!</p>
+<div class="create-course-panel data-form">
+    <h2 class="title">Create New Course</h2>
+
+    <mat-horizontal-stepper
+        class="mat-elevation-z5"
+        [linear]="true"
+        labelPostion="'bottom"
+    >
+        <mat-step errorMessage="Course details in error">
+            <ng-template matStepLabel>Course Detail</ng-template>
+            <app-create-course-setp-1></app-create-course-setp-1>
+
+            <div class="stepper-buttons">
+                <button mat-raised-button matStepperNext> Add Course Lessons</button>
+            </div>
+        </mat-step>
+
+        <mat-step errorMessage="Course lesson in error">
+            <ng-template matStepLabel>Course Lesson</ng-template>
+            <app-create-course-setp-2></app-create-course-setp-2>
+
+            <div class="stepper-buttons">
+                <button mat-raised-button matStepperPrevious>Back</button>
+                <button mat-raised-button matStepperNext color="accent">Create course</button>
+            </div>
+        </mat-step>
+
+    </mat-horizontal-stepper>
+</div>

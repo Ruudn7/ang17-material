@@ -1,0 +1,16 @@
+<div [formGroup]="form" class="course-details-form">
+
+    <mat-form-field floatLabel="always" appearance="outline">
+        <input type="text" matInput placeholder="Course title" formControlName="title" #title>
+        <!-- <span matSuffix>.00</span> -->
+        <mat-hint align="end">{{title?.value?.length}} / 60</mat-hint>
+
+        @if (courseTitle.errors?.['minlength']) {
+            <mat-error>
+                A minimum length of 5 characters is required
+            </mat-error>
+        }
+
+    </mat-form-field>
+
+</div>

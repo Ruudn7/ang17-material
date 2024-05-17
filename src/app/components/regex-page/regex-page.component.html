@@ -15,7 +15,34 @@
         *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[fcld]oo/ (f,c,l,d before oo - character classes)', regexCheckFunc: checkLetterBeforeStringRegex, list: stringArr4}"></ng-container>
 
     <ng-container
-        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[^fdl]oo/ (excluded [f,d, l] before oo - character classes)', regexCheckFunc: checkExxlduedLetterBeforeStringRegex, list: stringArr4}"></ng-container>
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[^fdl]oo/ (excluded [f,d, l] before oo - character classes)', regexCheckFunc: checkExlduedLetterBeforeStringRegex, list: stringArr4}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[h-p]oo/ (letters beetwen h and p directly before oo - character classes with range)', regexCheckFunc: checkLettersBetweenRangeRegex, list: stringArr4}"></ng-container>
+    
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[h-pz]oo/ (letters beetwen h and p or z directly before oo - character classes with range)', regexCheckFunc: checkLettersBetweenRangeAndOneLetterRegex, list: stringArr4}"></ng-container>
+    
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[h-pA-Dz]oo/ (letters beetwen (h and p) or (A-D) or z directly before oo - character classes with range)', regexCheckFunc: checkLettersBetweenUnionRangesAndOneLetterRegex, list: stringArr4}"></ng-container>
+        
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex check in function (dots beetwen x and y)', regexCheckFunc: checkDotsBetweenSetLettersRegex, list: stringArr5}"></ng-container>
+        
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /x[\\^#$%*]y/ (if some of ^#$%* is beetwen x and y - example with escape)', regexCheckFunc: checkAvaliableSymbolsBeetwenLetters, list: stringArr6}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /x[^#$%*^]y/ (exclude pattern if some of #$%*^ is beetwen x and y)', regexCheckFunc: checkExcludedSymbolsBeetwenLetters, list: stringArr6}"></ng-container>
+    
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^foo.*/ (if beginning from foo)', regexCheckFunc: checkIfFooFirstAndOtherAfter, list: stringArr7}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /.*bar$/ (if ends on bar - $ sign demad the end of expresion)', regexCheckFunc: checkIfBarIsLast, list: stringArr7}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /.*bar$/ (nothin behind and after foo)', regexCheckFunc: checkNothingBeforeAndBehindFoo, list: stringArr7}"></ng-container>
 </div>
 
 

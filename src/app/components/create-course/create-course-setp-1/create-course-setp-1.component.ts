@@ -1,22 +1,42 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter, DateAdapter } from '@angular/material/core';
 
 const SAMPLE_TEXT= "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin enim quam, semper et sodales in, aliquam vitae leo. Suspendisse quis eleifend nisl. Nunc ante ligula, ultricies sed quam et, consectetur laoreet enim. Praesent scelerisque velit efficitur blandit dapibus. Etiam vulputate, lacus eu vestibulum faucibus, leo odio consectetur sem, nec rhoncus nulla diam vitae ante. Aenean lacinia porta quam, vel pretium mi. Cras sed leo ut dui gravida faucibus ut at nibh. In hac habitasse platea dictumst. Praesent finibus tempor lobortis. Integer ut urna lacus. Fusce imperdiet dolor efficitur erat facilisis venenatis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam non eros efficitur, accumsan est vel, pulvinar sem.";
+
+export const MY_FORMATS = {
+  parse: {
+    dateInput: 'DD/MM/YYYY', // this is how your date will be parsed from Input
+  },
+  display: {
+    dateInput: 'DD/MM/YYYY', // this is how your date will get displayed on the Input
+    monthYearLabel: 'MMMM YYYY',
+    dateA11yLabel: 'LL',
+    monthYearA11yLabel: 'MMMM YYYY'
+  }
+};
 
 @Component({
   selector: 'app-create-course-setp-1',
   standalone: true,
-  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule ],
+  imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatRadioModule, MatSelectModule, MatDatepickerModule ],
+  providers: [provideNativeDateAdapter()],
   templateUrl: './create-course-setp-1.component.html',
   styleUrl: './create-course-setp-1.component.scss'
 })
 export class CreateCourseSetp1Component {
 
   constructor(
-    private fb: FormBuilder
-  ) {}
+    private fb: FormBuilder,
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.setLocale('en-GB')
+  }
 
   form = this.fb.group({
     title: ['', [

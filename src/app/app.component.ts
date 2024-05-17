@@ -5,12 +5,12 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { RouterOutlet } from '@angular/router';
+import { RouterModule, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatMenuModule],
+  imports: [RouterOutlet, RouterModule, MatButtonModule, MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatMenuModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

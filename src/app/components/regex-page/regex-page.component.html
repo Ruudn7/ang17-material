@@ -1,0 +1,44 @@
+<div class="container">
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /foox*bar/ (0 or more x betwwen foo and bar)', regexCheckFunc: checkXBetweenRegex, list: stringArr}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /foo...bar/ (3 any chars betwen  foo and bar - wildcard symbol)', regexCheckFunc: checkAnyCharBetweenRegex, list: stringArr}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /foo...bar/ (0 or sth between foo and bar - wildcard asterisc combo)', regexCheckFunc: checkSthBetweenRegex, list: stringArr2}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex check in function (0 or spaces between foo and bar - representing whitespaces)', regexCheckFunc: checkSpacesBetweenRegex, list: stringArr3}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[fcld]oo/ (f,c,l,d before oo - character classes)', regexCheckFunc: checkLetterBeforeStringRegex, list: stringArr4}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /[^fdl]oo/ (excluded [f,d, l] before oo - character classes)', regexCheckFunc: checkExxlduedLetterBeforeStringRegex, list: stringArr4}"></ng-container>
+</div>
+
+
+<ng-template #cardTemplate let-title="title" let-list="list" let-regexCheckFunc="regexCheckFunc">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                @for(item of list; track item) {
+
+                <mat-list-item>
+                    @if(regexCheckFunc(item)) {
+                    <mat-icon aria-hidden="false" color="primary" fontIcon="check"></mat-icon>
+                    } @else {
+                    <mat-icon aria-hidden="false" color="accent" fontIcon="close"></mat-icon>
+                    }
+                    {{item}}
+                </mat-list-item>
+                }
+            </mat-list>
+
+        </mat-card-content>
+    </mat-card>
+</ng-template>

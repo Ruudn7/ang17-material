@@ -23,10 +23,8 @@ export class HomeComponent {
 
   advancedCourses$!: Observable<ICourse[]>;
 
-  constructor(private coursesService: CoursesService) {
-
-  }
-
+  constructor(private coursesService: CoursesService) {}
+  
   ngOnInit(): void {
 
       const courses$ = this.coursesService.findAllCourses();

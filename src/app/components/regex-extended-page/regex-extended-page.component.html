@@ -1,1 +1,47 @@
-<p>regex-extended-page works!</p>
+<div class="container">
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^[0-9]{3}$/ (3 digit number)', regexCheckFunc: checkThreeDigitNumber, list: strArray}"></ng-container>
+    
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^[a-z]{4,6}$/ (strings from 4 to 6 letters)', regexCheckFunc: checkForToSixLetterString, list: strArray1}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^(ha){4,6}$/ (ha repeat 4 to 6 times)', regexCheckFunc: checkRepeatedPatterndFourTimeOrMore, list: strArray2}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^(ha){0,2}$/ (ha repeat 2 or less time)', regexCheckFunc: checkRepeatedPatterndLessThenFourTime, list: strArray2}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /fooa+bar/ (one or more `a` beetwen foo and bar)', regexCheckFunc: checkOneOreMoreCharBeetwenStings, list: strArray4}"></ng-container>
+    
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^https?:\/\/website/ (check http(s) correct form)', regexCheckFunc: checkIfCharIsBeetweenStrings, list: strArray5}"></ng-container>
+
+    <ng-container
+        *ngTemplateOutlet="cardTemplate; context: {title: 'Regex /^[log | ply]+wood/ (check if before wood is log or ply)', regexCheckFunc: checkIfBeginningStringMatch, list: strArray6}"></ng-container>
+</div>
+
+
+<ng-template #cardTemplate let-title="title" let-list="list" let-regexCheckFunc="regexCheckFunc">
+    <mat-card class="card">
+        <mat-card-header>
+            <mat-card-title>{{title}}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-list>
+                @for(item of list; track item) {
+
+                <mat-list-item>
+                    @if(regexCheckFunc(item)) {
+                    <mat-icon aria-hidden="false" color="primary" fontIcon="check"></mat-icon>
+                    } @else {
+                    <mat-icon aria-hidden="false" color="accent" fontIcon="close"></mat-icon>
+                    }
+                    {{item}}
+                </mat-list-item>
+                }
+            </mat-list>
+
+        </mat-card-content>
+    </mat-card>
+</ng-template>
